@@ -42,6 +42,8 @@ const myRouter = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRouter>
         ),
+        loader: () =>
+          fetch("https://brand-shop-server-ecru.vercel.app/products"),
       },
     ],
   },

@@ -75,12 +75,12 @@ const Login = () => {
                   </p>
                 </label>
               </div>
-              <a className="flex items-center text-sm leading-normal text-gray-700 antialiased font-medium hover:text-red-950 hover:underline transition-colors ml-1 font-Heebo">
+              <a className="flex items-center text-sm leading-normal text-gray-700 antialiased font-medium hover:text-red-900 hover:underline transition-colors ml-1 font-Heebo">
                 forget password?
               </a>
             </div>
             <button
-              className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-950/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-900/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="button"
               data-ripple-light="true"
             >
@@ -90,7 +90,7 @@ const Login = () => {
               Don&apos;t have an account?
               <Link
                 to={"/register"}
-                className="font-medium text-red-900 hover:text-red-950 hover:underline transition-colors ml-1 font-Heebo"
+                className="font-medium text-red-900 hover:text-red-900 hover:underline transition-colors ml-1 font-Heebo"
                 href="#"
               >
                 Register

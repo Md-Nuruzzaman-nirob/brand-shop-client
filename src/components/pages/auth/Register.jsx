@@ -156,7 +156,7 @@ const Register = () => {
               </label>
             </div>
             <button
-              className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-950/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-900/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="submit"
               data-ripple-light="true"
             >
@@ -166,7 +166,7 @@ const Register = () => {
               Already have an account?
               <Link
                 to={"/login"}
-                className="font-medium text-red-900 hover:text-red-950 hover:underline transition-colors ml-1 font-Heebo"
+                className="font-medium text-red-900 hover:text-red-900 hover:underline transition-colors ml-1 font-Heebo"
                 href="#"
               >
                 Login

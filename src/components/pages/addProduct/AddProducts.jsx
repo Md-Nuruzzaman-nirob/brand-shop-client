@@ -49,7 +49,7 @@ const AddProducts = () => {
       <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left py-8 md:py-12">
         <button
           onClick={handleGoBack}
-          className="btn btn-sm text-xs lg:text-base bg-red-800  hover:bg-red-950 text-white rounded-md px-6"
+          className="btn btn-sm text-xs lg:text-base bg-red-800  hover:bg-red-900 text-white rounded-md px-6"
         >
           <BsBoxArrowLeft />
           Home
@@ -214,7 +214,7 @@ const AddProducts = () => {
           </div>
           <button
             type="submit"
-            className="w-full btn btn-md text-xs lg:text-base bg-red-800 hover:bg-red-950 text-white rounded-md font-Heebo"
+            className="w-full btn bg-red-800 hover:bg-red-900 text-white rounded-md font-Heebo"
           >
             Add Product
           </button>
