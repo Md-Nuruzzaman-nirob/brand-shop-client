@@ -2,6 +2,7 @@ import NavBar from "../../common/NavBar";
 import toast from "react-hot-toast";
 import { useState } from "react";
 import { PiWarningOctagonFill } from "react-icons/pi";
+import Footer from "../../common/Footer";
 
 const ContactUs = () => {
   const [emailValidation, setEmailValidation] = useState("");
@@ -145,6 +146,7 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
+      <Footer></Footer>
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import SocialLogin from "./SocialLogin";
+import Footer from "../../common/Footer";
 
 const Login = () => {
   return (
@@ -99,6 +100,7 @@ const Login = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

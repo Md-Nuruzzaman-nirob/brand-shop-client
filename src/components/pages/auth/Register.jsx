@@ -4,6 +4,7 @@ import SocialLogin from "./SocialLogin";
 import useAuth from "../../../hooks/useAuth";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
+import Footer from "../../common/Footer";
 
 const Register = () => {
   const { createUser } = useAuth();
@@ -175,6 +176,7 @@ const Register = () => {
           </form>
         </div>
       </div>
+      <Footer></Footer>
     </>
   );
 };

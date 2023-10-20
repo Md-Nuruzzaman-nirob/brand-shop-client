@@ -1,13 +1,26 @@
-import { useNavigate } from "react-router-dom";
+import {
+  useLoaderData,
+  useLocation,
+  useNavigate,
+  useParams,
+} from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import { BsBoxArrowLeft } from "react-icons/bs";
 import Footer from "../../common/Footer";
 import Swal from "sweetalert2";
 
-const AddProducts = () => {
+const UpdateProduct = () => {
+  const { id } = useParams();
+  const cartData = useLoaderData();
+  const location = useLocation();
+
+  const product = cartData.find((product) => product._id === id);
+  const { brandName, category, imageUrl, message, name, price, rating, _id } =
+    product || {};
+
   const navigate = useNavigate();
   const handleGoBack = () => {
-    navigate("/");
+    navigate(location?.state ? location.state : "/");
   };
 
   const handleSubmit = (e) => {
@@ -20,7 +33,7 @@ const AddProducts = () => {
     const price = form.price.value;
     const rating = form.rating.value;
     const message = form.message.value;
-    const addProduct = {
+    const updateProduct = {
       brandName,
       name,
       imageUrl,
@@ -31,41 +44,41 @@ const AddProducts = () => {
     };
 
     // sending to backEnd
-    fetch("https://brand-shop-server-ecru.vercel.app/products", {
-      method: "POST",
+    fetch(`https://brand-shop-server-ecru.vercel.app/products/${_id}`, {
+      method: "PUT",
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(addProduct),
+      body: JSON.stringify(updateProduct),
     })
       .then((res) => res.json())
       .then(() => {
         Swal.fire({
-          position: "center",
+          position: "top-end",
           icon: "success",
-          title: "Your Product added Successfully",
+          title: "Your Product Update Successfully",
           showConfirmButton: false,
           timer: 1500,
         });
-        form.reset();
+        navigate(location?.state ? location.state : "/");
       });
   };
   return (
     <div>
       <NavBar></NavBar>
-      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left py-8 md:py-12">
+      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left my-8 md:my-12">
         <button
           onClick={handleGoBack}
           className="btn btn-sm text-xs lg:text-base bg-red-800  hover:bg-red-900 text-white rounded-md px-6"
         >
           <BsBoxArrowLeft />
-          Home
+          back
         </button>
       </div>
 
       <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto px-4 md:px-10 lg:px-16 xl:px-28 py-10 md:py-16 lg:py-20 bg-[#F4F3F0] mb-16 md:mb-20 lg:mb-28 rounded-md">
         <h3 className="text-4xl md:text-5xl text-center font-Bebas">
-          Add your Product
+          Update your Product
         </h3>
         <p className="text-center text-xs md:text-sm lg:text-base xl:text-lg md:mx-6 lg:mx-10 xl:mx-20 my-5 md:my-8"></p>
 
@@ -81,6 +94,7 @@ const AddProducts = () => {
               <select
                 id="brandName"
                 name="brandName"
+                defaultValue={brandName}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
                 required
               >
@@ -104,6 +118,7 @@ const AddProducts = () => {
                 type="text"
                 id="name"
                 name="name"
+                defaultValue={name}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus-bg-white"
                 placeholder="Enter name"
                 required
@@ -123,6 +138,7 @@ const AddProducts = () => {
                 type="url"
                 id="imageUrl"
                 name="imageUrl"
+                defaultValue={imageUrl}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus-bg-white"
                 placeholder="Enter image url"
               />
@@ -138,6 +154,7 @@ const AddProducts = () => {
               <select
                 id="category"
                 name="category"
+                defaultValue={category}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
                 required
               >
@@ -161,6 +178,7 @@ const AddProducts = () => {
               <select
                 id="price"
                 name="price"
+                defaultValue={price}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
                 required
               >
@@ -193,6 +211,7 @@ const AddProducts = () => {
               <select
                 id="rating"
                 name="rating"
+                defaultValue={rating}
                 className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
                 required
               >
@@ -215,6 +234,7 @@ const AddProducts = () => {
             <textarea
               id="message"
               name="message"
+              defaultValue={message}
               className="rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black overflow-hidden"
               placeholder="Your Message"
             />
@@ -223,7 +243,7 @@ const AddProducts = () => {
             type="submit"
             className="w-full btn bg-red-800 hover:bg-red-900 text-white rounded-md font-Heebo"
           >
-            Add Product
+            Update Product
           </button>
         </form>
       </div>
@@ -232,4 +252,4 @@ const AddProducts = () => {
   );
 };
 
-export default AddProducts;
+export default UpdateProduct;

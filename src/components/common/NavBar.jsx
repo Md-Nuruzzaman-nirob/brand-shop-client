@@ -14,7 +14,7 @@ const NavBar = () => {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="sticky inset-0 z-10 block h-max w-full max-w-full rounded-none bg-white bg-opacity-60 py-4 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 lg:px-8 xl:px-0 lg:py-5 font-Noto">
+    <nav className="sticky inset-0 z-10 block h-max w-full max-w-full rounded-none bg-white bg-opacity-60 py-4 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 md:px-10 xl:px-0 lg:py-5">
       <div className="max-w-7xl mx-auto flex items-center justify-between text-gray-900">
         <div className="flex items-center gap-2">
           <img className="w-8 h-8 lg:w-10 lg:h-10" src={logo} alt="" />
@@ -284,7 +284,7 @@ const NavBar = () => {
             <hr />
 
             <Link
-              to={"/mycart"}
+              to={"/cart"}
               className="btn btn-sm btn-neutral flex items-center justify-start font-Heebo font-extrabold bg-red-800 hover:bg-red-900 text-white border-none rounded-md"
             >
               <IoMdCart></IoMdCart> My Cart

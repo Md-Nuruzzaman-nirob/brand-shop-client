@@ -17,7 +17,7 @@ const Banner = () => {
           high-quality, well-maintained vehicles.
         </p>
         <h3 className="font-Bebas text-8xl my-4">
-          Quality Cars for Every Journey
+          Quality vehicles for Every Journey
         </h3>
         <button className="btn">Explore More</button>
       </div>
