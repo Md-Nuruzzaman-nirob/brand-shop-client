@@ -1,15 +1,66 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import SocialLogin from "./SocialLogin";
 import useAuth from "../../../hooks/useAuth";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 import Footer from "../../common/Footer";
+import { useState } from "react";
+import toast from "react-hot-toast";
+import { PiWarningOctagonFill } from "react-icons/pi";
+import Swal from "sweetalert2";
 
 const Register = () => {
-  const { createUser } = useAuth();
+  // use state
+  const [nameValidation, setNameValidation] = useState("");
+  const [emailValidation, setEmailValidation] = useState("");
+  const [passwordValidation, setPasswordValidation] = useState("");
+  const [checkboxValidation, setCheckboxValidation] = useState("");
 
-  const handleFormSubmit = (e) => {
+  // context
+  const { createUser } = useAuth();
+  // navigate
+  const navigate = useNavigate();
+  // use location
+  const location = useLocation();
+
+  // name validation
+  const handleNameValidation = (e) => {
+    const name = e.target.value;
+    if (name.length < 4) {
+      return setNameValidation("Name should be at least 4 characters");
+    } else {
+      setNameValidation("");
+    }
+  };
+
+  // email validation
+  const handleEmailValidation = (e) => {
+    const email = e.target.value;
+    if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+      setEmailValidation("Please enter a valid email address.");
+    } else {
+      setEmailValidation("");
+    }
+  };
+
+  // password validation
+  const handlePasswordValidation = (e) => {
+    const password = e.target.value;
+    if (password.length < 6) {
+      return setPasswordValidation("Password should be at least 6 characters");
+    } else if (
+      !/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d@$!%*#?&]{6,}$/.test(password)
+    ) {
+      return setPasswordValidation(
+        "Password must contain at least one  lowercase letter, one uppercase letter, one digit."
+      );
+    } else {
+      setPasswordValidation("");
+    }
+  };
+
+  const handleCreateUser = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
@@ -18,8 +69,24 @@ const Register = () => {
     const password = form.password.value;
     const checkbox = form.checkbox.checked;
 
-    const user = { name, url, email };
-    console.log(user, password, checkbox);
+    if (nameValidation) {
+      return;
+    }
+    if (emailValidation) {
+      return;
+    }
+    if (passwordValidation) {
+      return;
+    }
+
+    if (!checkbox) {
+      return setCheckboxValidation("Please accept terms & conditions");
+    }
+
+    setNameValidation("");
+    setEmailValidation("");
+    setPasswordValidation("");
+    setCheckboxValidation("");
 
     createUser(email, password)
       .then(() => {
@@ -28,29 +95,32 @@ const Register = () => {
           displayName: name,
           photoURL: url,
         })
-          .then(() => {
-            fetch("https://brand-shop-server-ecru.vercel.app/products", {
-              method: "POST",
-              headers: {
-                "content-type": "application/json",
-              },
-              body: JSON.stringify(user),
-            })
-              .then((res) => res.json())
-              .then((data) => console.log(data));
-          })
+          .then(() => {})
           .catch((error) => {
-            alert(error);
+            toast.error(error.message.slice(10));
           });
 
+        //email verification
         sendEmailVerification(auth.currentUser).then(() => {
-          alert("Email verification sent!");
+          Swal.fire({
+            title:
+              "You successfully create your account. Please check your email for verification.",
+            icon: "question",
+            iconHtml: "؟",
+            confirmButtonText: "OK",
+            showCloseButton: true,
+          });
+          navigate(location?.state ? location.state : "/");
         });
       })
       .catch((error) => {
-        alert(error);
+        if (error.message === "Firebase: Error (auth/email-already-in-use).") {
+          return setEmailValidation("Email already in use");
+        }
+        toast.error(error.message.slice(10));
       });
   };
+
   return (
     <>
       <NavBar></NavBar>
@@ -63,12 +133,13 @@ const Register = () => {
             <div className="flex-1 border-t border-gray-300"></div>
           </div>
           <form
-            onSubmit={handleFormSubmit}
+            onSubmit={handleCreateUser}
             className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
           >
-            <div className="mb-4 flex flex-col gap-6">
+            <div className=" flex flex-col gap-8">
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
+                  onChange={handleNameValidation}
                   className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   name="name"
@@ -77,6 +148,15 @@ const Register = () => {
                 <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Name
                 </label>
+                {nameValidation && (
+                  <p className="flex items-center gap-1 text-[#e83e8c] text-sm mt-1">
+                    <span>
+                      {" "}
+                      <PiWarningOctagonFill></PiWarningOctagonFill>
+                    </span>
+                    {nameValidation}
+                  </p>
+                )}
               </div>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
@@ -90,6 +170,7 @@ const Register = () => {
               </div>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
+                  onChange={handleEmailValidation}
                   className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   name="email"
@@ -98,9 +179,19 @@ const Register = () => {
                 <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Email
                 </label>
+                {emailValidation && (
+                  <p className="flex items-center gap-1 text-[#e83e8c] text-sm mt-1">
+                    <span>
+                      {" "}
+                      <PiWarningOctagonFill></PiWarningOctagonFill>
+                    </span>
+                    {emailValidation}
+                  </p>
+                )}
               </div>
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
+                  onChange={handlePasswordValidation}
                   type="password"
                   className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
@@ -111,6 +202,18 @@ const Register = () => {
                   Password
                 </label>
               </div>
+            </div>
+            <div className="block">
+              {" "}
+              {passwordValidation && (
+                <p className="flex items-center gap-1 text-[#e83e8c] text-sm">
+                  <span>
+                    {" "}
+                    <PiWarningOctagonFill></PiWarningOctagonFill>
+                  </span>
+                  {passwordValidation}
+                </p>
+              )}
             </div>
             <div className="inline-flex items-center">
               <label
@@ -156,6 +259,16 @@ const Register = () => {
                 </p>
               </label>
             </div>
+            {checkboxValidation && (
+              <p className=" flex items-center gap-1 text-[#e83e8c] text-sm">
+                <span>
+                  {" "}
+                  <PiWarningOctagonFill></PiWarningOctagonFill>
+                </span>
+                {checkboxValidation}
+              </p>
+            )}
+
             <button
               className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-900/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
               type="submit"
