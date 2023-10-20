@@ -3,11 +3,21 @@ import NavBar from "../../../common/NavBar";
 import banner1 from "../../../../assets/pexels-photo-10664458.jpeg";
 import banner2 from "../../../../assets/pexels-photo-170811.jpeg";
 import banner3 from "../../../../assets/pexels-photo-2365572.jpeg";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
 
 const BrandProducts = () => {
+  const { id } = useParams();
+  console.log(id);
   const productsData = useLoaderData();
+  console.log(productsData);
+
+  const filteredProduct = productsData.filter(
+    (product) => product.brandName.toLowerCase() === id
+  );
+
+  console.log(filteredProduct);
+
   return (
     <div>
       <NavBar></NavBar>
@@ -71,7 +81,7 @@ const BrandProducts = () => {
         </div>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-20 max-w-7xl mx-4 md:mx-10 xl:mx-auto">
-        {productsData.map((product) => (
+        {filteredProduct?.map((product) => (
           <ProductCard key={product._id} product={product}></ProductCard>
         ))}
       </div>

@@ -54,7 +54,7 @@ const UpdateProduct = () => {
       .then((res) => res.json())
       .then(() => {
         Swal.fire({
-          position: "top-end",
+          position: "center",
           icon: "success",
           title: "Your Product Update Successfully",
           showConfirmButton: false,
