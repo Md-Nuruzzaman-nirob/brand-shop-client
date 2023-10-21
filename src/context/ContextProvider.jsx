@@ -22,7 +22,6 @@ const ContextProvider = ({ children }) => {
   // useState
   const [user, setUser] = useState(null);
   const [loader, setLoader] = useState(true);
-  console.log(user);
 
   // create user
   const createUser = (email, password) => {

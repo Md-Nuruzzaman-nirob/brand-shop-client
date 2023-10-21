@@ -11,11 +11,13 @@ import BrandProducts from "../components/pages/home/brands/BrandProducts";
 import UpdateProduct from "../components/pages/update/UpdateProduct";
 import UpdateCartProduct from "../components/pages/update/UpdateCartProduct";
 import DetailsProduct from "../components/pages/details/DetailsProduct";
+import ErrorPage from "../components/pages/404Page/ErrorPage";
 
 const myRouter = createBrowserRouter([
   {
     path: "/",
     element: <Root></Root>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

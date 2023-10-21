@@ -29,17 +29,16 @@ const Login = () => {
     const form = new FormData(e.currentTarget);
     const email = form.get("email");
     const password = form.get("password");
-    console.log(e);
-    console.log(form);
 
     setEmailValidation("");
     setEmailValidation("");
 
     loginUser(email, password)
       .then(() => {
-        toast.success("Login successfully.", {
-          position: "top-center",
-          duration: 4000,
+        Swal.fire({
+          title: "Login successfully.",
+          confirmButtonText: "OK",
+          showCloseButton: true,
         });
         navigate(location?.state ? location.state : "/");
       })
@@ -86,8 +85,8 @@ const Login = () => {
   return (
     <>
       <NavBar></NavBar>
-      <div className="flex items-center justify-center my-48">
-        <div className="relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none">
+      <div className="flex items-center justify-center my-48 bg-[#feffff]">
+        <div className="relative flex flex-col rounded-xl bg-transparent bg-clip-border text-gray-700 shadow-none font-Ubuntu font-medium">
           <SocialLogin></SocialLogin>
           <div className="flex items-center">
             <div className="flex-1 border-t border-gray-300"></div>
@@ -103,12 +102,12 @@ const Login = () => {
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
                   ref={emailRef}
-                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-Ubuntu text-sm font-medium text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   name="email"
                   required
                 />
-                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-medium leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Email
                 </label>
                 {emailValidation && (
@@ -125,12 +124,12 @@ const Login = () => {
               <div className="relative h-11 w-full min-w-[200px]">
                 <input
                   type="password"
-                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-sans text-sm font-normal text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
+                  className="peer h-full w-full rounded-md border border-blue-gray-200 border-t-transparent bg-transparent px-3 py-3 font-Ubuntu text-sm font-medium text-blue-gray-700 outline outline-0 transition-all placeholder-shown:border placeholder-shown:border-blue-gray-200 placeholder-shown:border-t-blue-gray-200 focus:border-2 focus:border-pink-500 focus:border-t-transparent focus:outline-0 disabled:border-0 disabled:bg-blue-gray-50"
                   placeholder=" "
                   required
                   name="password"
                 />
-                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-normal leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
+                <label className="before:content[' '] after:content[' '] pointer-events-none absolute left-0 -top-1.5 flex h-full w-full select-none text-[11px] font-medium leading-tight text-blue-gray-400 transition-all before:pointer-events-none before:mt-[6.5px] before:mr-1 before:box-border before:block before:h-1.5 before:w-2.5 before:rounded-tl-md before:border-t before:border-l before:border-blue-gray-200 before:transition-all after:pointer-events-none after:mt-[6.5px] after:ml-1 after:box-border after:block after:h-1.5 after:w-2.5 after:flex-grow after:rounded-tr-md after:border-t after:border-r after:border-blue-gray-200 after:transition-all peer-placeholder-shown:text-sm peer-placeholder-shown:leading-[4.1] peer-placeholder-shown:text-blue-gray-500 peer-placeholder-shown:before:border-transparent peer-placeholder-shown:after:border-transparent peer-focus:text-[11px] peer-focus:leading-tight peer-focus:text-pink-500 peer-focus:before:border-t-2 peer-focus:before:border-l-2 peer-focus:before:!border-pink-500 peer-focus:after:border-t-2 peer-focus:after:border-r-2 peer-focus:after:!border-pink-500 peer-disabled:text-transparent peer-disabled:before:border-transparent peer-disabled:after:border-transparent peer-disabled:peer-placeholder-shown:text-blue-gray-500">
                   Password
                 </label>
                 {passwordValidation && (
@@ -174,34 +173,33 @@ const Login = () => {
                   </span>
                 </label>
                 <label
-                  className="mt-px cursor-pointer select-none font-light text-gray-700"
+                  className="mt-px cursor-pointer select-none font-medium text-gray-700"
                   htmlFor="checkbox"
                 >
-                  <p className="flex items-center font-sans text-sm font-normal leading-normal text-gray-700 antialiased">
+                  <p className="flex items-center font-Ubuntu text-sm font-medium leading-normal text-gray-700 antialiased">
                     remember me
                   </p>
                 </label>
               </div>
               <a
                 onClick={handleForgetPassword}
-                className="flex items-center text-sm leading-normal text-gray-700 antialiased font-medium hover:text-red-900 hover:underline transition-colors ml-1 font-Heebo"
+                className="flex items-center text-sm leading-normal text-gray-700 antialiased font-medium hover:text-[#17252a] hover:underline transition-colors ml-1 font-Ubuntu"
               >
                 forget password?
               </a>
             </div>
             <button
-              className="btn mt-6 w-full border-none rounded-md bg-red-900 hover:bg-red-900 text-center font-Heebo text-lg font-bold uppercase text-white shadow-md transition-all hover:shadow-md hover:shadow-red-900/80 focus:opacity-[0.85] focus:shadow-none active:opacity-[0.85] active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+              className="w-full btn rounded-md md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case mt-4"
               type="submit"
-              data-ripple-light="true"
+              data-ripple-mfont-medium="true"
             >
               Login
             </button>
-            <p className="mt-4 block text-center font-sans text-base font-normal leading-relaxed text-gray-700 antialiased">
+            <p className="mt-4 block text-center font-Ubuntu text-base font-medium leading-relaxed text-gray-700 antialiased">
               Don&apos;t have an account?
               <Link
                 to={"/register"}
-                className="font-medium text-red-900 hover:text-red-900 hover:underline transition-colors ml-1 font-Heebo"
-                href="#"
+                className="font-bold text-[#17252a] hover:text-[#17252a] hover:underline transition-colors ml-1 font-Ubuntu"
               >
                 Register
               </Link>

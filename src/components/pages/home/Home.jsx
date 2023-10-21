@@ -4,6 +4,7 @@ import Banner from "../../common/Banner";
 import Footer from "../../common/Footer";
 import Brands from "./brands/Brands";
 import HomeContact from "./contact/HomeContact";
+import WhyChooseUs from "./chooseUs/WhyChooseUs";
 
 const Home = () => {
   const { loader } = useAuth();
@@ -20,6 +21,7 @@ const Home = () => {
     <div>
       <NavBar></NavBar>
       <Banner></Banner>
+      <WhyChooseUs></WhyChooseUs>
       <Brands></Brands>
       <HomeContact></HomeContact>
       <Footer></Footer>

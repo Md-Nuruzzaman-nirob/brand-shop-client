@@ -164,6 +164,7 @@ const AddProducts = () => {
                 className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus:bg-[#feffff] outline-none"
                 required
               >
+                <option>100</option>
                 <option>500</option>
                 <option>1000</option>
                 <option>1500</option>
@@ -178,8 +179,14 @@ const AddProducts = () => {
                 <option>20000</option>
                 <option>25000</option>
                 <option>30000</option>
+                <option>35000</option>
                 <option>40000</option>
+                <option>45000</option>
                 <option>50000</option>
+                <option>70000</option>
+                <option>80000</option>
+                <option>100000</option>
+                <option>150000</option>
               </select>
             </div>
 

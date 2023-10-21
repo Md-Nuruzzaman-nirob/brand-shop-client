@@ -60,10 +60,10 @@ const HomeContact = () => {
               <p className="opacity-80">Website:</p>
               <Link
                 target="_blank"
-                to={"https://confer-42442.web.app"}
+                to={"https://brand-shop-61d84.web.app/"}
                 className="font-medium hover:underline"
               >
-                https://confer-42442.web.app
+                https://brand-shop-61d84.web.app/
               </Link>
             </div>
           </div>

@@ -72,7 +72,7 @@ const UpdateProduct = () => {
           className="btn btn-sm rounded-md border-none text-sm lg:text-lg px-6 font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
         >
           <BsBoxArrowLeft />
-          Home
+          Back
         </button>
       </div>
 

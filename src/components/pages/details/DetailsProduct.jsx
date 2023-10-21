@@ -25,7 +25,6 @@ const DetailsProduct = () => {
   };
 
   const handleSubmit = () => {
-    console.log(brandName);
     const addToCart = {
       brandName,
       name,
@@ -35,7 +34,6 @@ const DetailsProduct = () => {
       rating,
       message,
     };
-    console.log(addToCart);
 
     // sending to backEnd
     fetch("https://brand-shop-server-ecru.vercel.app/carts", {
@@ -88,110 +86,113 @@ const DetailsProduct = () => {
   return (
     <>
       <NavBar></NavBar>
-      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left my-10 md:my-12">
-        <button
-          onClick={handleGoBack}
-          className="btn btn-sm text-xs lg:text-base bg-red-800  hover:bg-red-900 text-white rounded-md px-6"
-        >
-          <BsBoxArrowLeft />
-          back
-        </button>
-      </div>
-      <div className=" mb-16 md:mb-36 lg:mb-48 max-w-7xl mx-4 md:mx-10 xl:mx-auto">
-        <div className="relative flex w-full flex-col md:flex-row rounded-xl bg-clip-border text-gray-700 shadow-md bg-[#F4F3F0]">
-          <div className="flex-1 relative m-0 md:w-2/5 shrink-0 overflow-hidden md:rounded-xl rounded-t-xl md:rounded-r-none bg-white bg-clip-border text-gray-700">
-            <img src={imageUrl} className="object-cover w-full h-full" />
-          </div>
-
-          <div className="flex-1 m-5 lg:m-10 md:w-full">
-            <h3 className="font-Bebas text-2xl lg:text-4xl xl:text-5xl lg:pb-4 border-b-2">
-              {name}
-            </h3>
-            <div className="flex justify-between items-center mt-3 lg:mt-5 mb-2 xl:mb-4">
-              <h3 className="font-Heebo font-semibold xl:text-xl opacity-70">
-                Brand :{" "}
-                <span className="text-xl xl:text-2xl font-Bebas font-normal text-black">
-                  {brandName}
-                </span>
-              </h3>
-              <p className="font-Heebo font-semibold xl:text-xl opacity-70">
-                Price :{" "}
-                <span className="text-xl xl:text-2xl font-Bebas font-normal text-black">
-                  {price}$
-                </span>
-              </p>
+      <div className="bg-[#17252a]">
+        <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left py-8 md:py-12">
+          <button
+            onClick={handleGoBack}
+            className="btn btn-sm rounded-md text-sm lg:text-lg px-6 font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case border-[#feffff]"
+          >
+            <BsBoxArrowLeft />
+            Back
+          </button>
+        </div>
+        <div className="pb-16 md:pb-36 lg:pb-48 max-w-7xl mx-4 md:mx-10 xl:mx-auto">
+          <div className="relative flex w-full flex-col md:flex-row rounded-xl bg-clip-border text-gray-700 shadow-md bg-[#feffff]">
+            <div className="flex-1 relative m-0 md:w-2/5 shrink-0 overflow-hidden md:rounded-xl rounded-t-xl md:rounded-r-none bg-[#feffff] bg-clip-border text-gray-700">
+              <img src={imageUrl} className="object-cover w-full h-full" />
             </div>
-            <div className="flex justify-between items-center">
-              <p className="font-Heebo font-semibold xl:text-xl opacity-70">
-                Category :{" "}
-                <span className="text-xl xl:text-2xl font-Bebas font-normal text-black">
-                  {category}
-                </span>
-              </p>
-              <div className="flex items-center gap-1">
-                <h3 className="font-Heebo font-semibold xl:text-xl opacity-70">
-                  Rating :{" "}
+
+            <div className="flex-1 m-5 lg:m-10 md:w-full">
+              <h3 className="font-Ubuntu font-bold text-2xl lg:text-4xl xl:text-5xl lg:pb-4 border-b-2">
+                {name}
+              </h3>
+              <div className="flex justify-between items-center mt-3 lg:mt-5 mb-2 xl:mb-4">
+                <h3 className="font-Ubuntu font-bold xl:text-xl opacity-70">
+                  Brand :{" "}
+                  <span className="text-xl xl:text-2xl font-Ubuntu font-bold text-[#17252a]">
+                    {brandName}
+                  </span>
                 </h3>
-                <div className="rating rating-sm xl:rating-md">
-                  <input
-                    type="radio"
-                    name={`rating-${_id}`}
-                    className="mask mask-star-2 bg-orange-400"
-                    disabled
-                    defaultChecked={rating === "1"}
-                  />
-                  <input
-                    type="radio"
-                    name={`rating-${_id}`}
-                    className="mask mask-star-2 bg-orange-400"
-                    disabled
-                    defaultChecked={rating === "2"}
-                  />
-                  <input
-                    type="radio"
-                    name={`rating-${_id}`}
-                    className="mask mask-star-2 bg-orange-400"
-                    disabled
-                    defaultChecked={rating === "3"}
-                  />
-                  <input
-                    type="radio"
-                    name={`rating-${_id}`}
-                    className="mask mask-star-2 bg-orange-400"
-                    disabled
-                    defaultChecked={rating === "4"}
-                  />
-                  <input
-                    type="radio"
-                    name={`rating-${_id}`}
-                    className="mask mask-star-2 bg-orange-400"
-                    disabled
-                    defaultChecked={rating === "5"}
-                  />
+                <p className="font-Ubuntu font-bold xl:text-xl opacity-70">
+                  Price :{" "}
+                  <span className="text-xl xl:text-2xl font-Ubuntu font-bold text-[#17252a]">
+                    {price}$
+                  </span>
+                </p>
+              </div>
+              <div className="flex justify-between items-center">
+                <p className="font-Ubuntu font-bold xl:text-xl opacity-70">
+                  Category :{" "}
+                  <span className="text-xl xl:text-2xl font-Ubuntu font-bold text-[#17252a]">
+                    {category}
+                  </span>
+                </p>
+                <div className="flex items-center gap-1">
+                  <h3 className="font-Ubuntu font-bold xl:text-xl opacity-70">
+                    Rating :{" "}
+                  </h3>
+                  <div className="rating rating-sm xl:rating-md">
+                    <input
+                      type="radio"
+                      name={`rating-${_id}`}
+                      className="mask mask-star-2 bg-orange-400"
+                      disabled
+                      defaultChecked={rating === "1"}
+                    />
+                    <input
+                      type="radio"
+                      name={`rating-${_id}`}
+                      className="mask mask-star-2 bg-orange-400"
+                      disabled
+                      defaultChecked={rating === "2"}
+                    />
+                    <input
+                      type="radio"
+                      name={`rating-${_id}`}
+                      className="mask mask-star-2 bg-orange-400"
+                      disabled
+                      defaultChecked={rating === "3"}
+                    />
+                    <input
+                      type="radio"
+                      name={`rating-${_id}`}
+                      className="mask mask-star-2 bg-orange-400"
+                      disabled
+                      defaultChecked={rating === "4"}
+                    />
+                    <input
+                      type="radio"
+                      name={`rating-${_id}`}
+                      className="mask mask-star-2 bg-orange-400"
+                      disabled
+                      defaultChecked={rating === "5"}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
 
-            <p className="font-Heebo font-semibold xl:text-xl opacity-70 my-3 xl:my-5 border-b-2 h-20 lg:h-24 xl:h-28 w-full">
-              Short description : <span className="text-black">{message}</span>
-            </p>
+              <p className="font-Ubuntu font-bold xl:text-xl opacity-70 my-3 xl:my-5 border-b-2 h-20 lg:h-24 xl:h-28 w-full">
+                Short description :{" "}
+                <span className="text-[#17252a]">{message}</span>
+              </p>
 
-            <div className="flex justify-between items-center gap-2 mt-4 xl:mt-6">
-              <div className="flex-1">
-                <button
-                  onClick={handleSubmit}
-                  className="w-full btn btn-neutral"
-                >
-                  Add to Cart
-                </button>
-              </div>
-              <div className="flex-1">
-                <button
-                  onClick={() => handleDelete(_id)}
-                  className=" w-full btn btn-neutral"
-                >
-                  Delete
-                </button>
+              <div className="flex justify-between items-center gap-2 mt-4 xl:mt-6">
+                <div className="flex-1">
+                  <button
+                    onClick={handleSubmit}
+                    className="w-full btn flex items-center gap-2 rounded-md px-6 text-center md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
+                  >
+                    Add to Cart
+                  </button>
+                </div>
+                <div className="flex-1">
+                  <button
+                    onClick={() => handleDelete(_id)}
+                    className=" w-full btn flex items-center gap-2 rounded-md px-6 text-center md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
+                  >
+                    Delete
+                  </button>
+                </div>
               </div>
             </div>
           </div>

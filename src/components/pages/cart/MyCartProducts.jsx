@@ -8,7 +8,6 @@ const MyCartProducts = ({ product }) => {
 
   const location = useLocation();
   const navigate = useNavigate();
-  console.log(location);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -39,33 +38,33 @@ const MyCartProducts = ({ product }) => {
   };
 
   return (
-    <div className="bg-[#F4F3F0] rounded-xl">
+    <div className="bg-[#feffff] rounded-xl border shadow-lg">
       <img className="w-full h-52 md:h-80 rounded-t-xl" src={imageUrl} alt="" />
       <div className="m-5 ">
-        <h3 className="font-Bebas text-2xl border-b-2">{name}</h3>
+        <h3 className="font-Ubuntu font-bold text-2xl border-b-2">{name}</h3>
         <div className="flex justify-between items-center mt-3 mb-2">
-          <h3 className="font-Heebo font-semibold opacity-70">
+          <h3 className="font-Ubuntu font-bold opacity-70">
             Brand :{" "}
-            <span className="text-xl font-Bebas font-normal text-black">
+            <span className="lg:text-xl font-Ubuntu font-bold text-[#17252a]">
               {brandName}
             </span>
           </h3>
-          <p className="font-Heebo font-semibold opacity-70">
+          <p className="font-Ubuntu font-bold opacity-70">
             Price :{" "}
-            <span className="text-xl font-Bebas font-normal text-black">
+            <span className="lg:text-xl font-Ubuntu font-bold text-[#17252a]">
               {price}$
             </span>
           </p>
         </div>
         <div className="flex justify-between items-center">
-          <p className="font-Heebo font-semibold opacity-70">
+          <p className="font-Ubuntu font-bold opacity-70">
             Category :{" "}
-            <span className="text-xl font-Bebas font-normal text-black">
+            <span className="lg:text-xl font-Ubuntu font-bold text-[#17252a]">
               {category}
             </span>
           </p>
           <div className="flex items-center gap-1">
-            <h3 className="font-Heebo font-semibold opacity-70">Rating : </h3>
+            <h3 className="font-Ubuntu font-bold opacity-70">Rating : </h3>
             <div className="rating rating-sm">
               <input
                 type="radio"
@@ -106,8 +105,8 @@ const MyCartProducts = ({ product }) => {
           </div>
         </div>
 
-        <p className="font-Heebo font-semibold opacity-70 my-3 border-b-2 h-20 w-full">
-          Short description : <span className="text-black">{message}</span>
+        <p className="font-Ubuntu font-bold opacity-70 my-3 border-b-2 h-20 w-full">
+          Short description : <span className="text-[#17252a]">{message}</span>
         </p>
 
         <div className="flex items-center gap-2 mt-4">
@@ -116,12 +115,14 @@ const MyCartProducts = ({ product }) => {
             state={location.pathname}
             className="flex-1"
           >
-            <button className="w-full btn btn-neutral">Update</button>
+            <button className="w-full btn flex items-center gap-2 rounded-md px-6 text-center md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case">
+              Update
+            </button>
           </Link>
           <div className="flex-1">
             <button
               onClick={() => handleDelete(_id)}
-              className="w-full btn btn-neutral"
+              className="w-full btn flex items-center gap-2 rounded-md px-6 text-center md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
             >
               Delete
             </button>
