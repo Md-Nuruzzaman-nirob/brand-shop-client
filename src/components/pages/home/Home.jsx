@@ -3,6 +3,7 @@ import useAuth from "../../../hooks/useAuth";
 import Banner from "../../common/Banner";
 import Footer from "../../common/Footer";
 import Brands from "./brands/Brands";
+import HomeContact from "./contact/HomeContact";
 
 const Home = () => {
   const { loader } = useAuth();
@@ -20,6 +21,7 @@ const Home = () => {
       <NavBar></NavBar>
       <Banner></Banner>
       <Brands></Brands>
+      <HomeContact></HomeContact>
       <Footer></Footer>
     </div>
   );

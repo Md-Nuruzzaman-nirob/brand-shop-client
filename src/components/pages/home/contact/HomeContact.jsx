@@ -1,18 +1,10 @@
-import NavBar from "../../common/NavBar";
-import toast from "react-hot-toast";
 import { useState } from "react";
+import toast from "react-hot-toast";
 import { PiWarningOctagonFill } from "react-icons/pi";
-import Footer from "../../common/Footer";
-import { useNavigate } from "react-router-dom";
-import { BsBoxArrowLeft } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
-const ContactUs = () => {
+const HomeContact = () => {
   const [emailValidation, setEmailValidation] = useState("");
-
-  const navigate = useNavigate();
-  const handleGoBack = () => {
-    navigate("/");
-  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,35 +26,55 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="bg-[#17252a]">
-      <NavBar></NavBar>
-      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left py-8 md:py-12">
-        <button
-          onClick={handleGoBack}
-          className="btn btn-sm rounded-md text-sm lg:text-lg px-6 font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case border-white"
-        >
-          <BsBoxArrowLeft />
-          Home
-        </button>
-      </div>
-      <div className="flex justify-center items-center mb-24 md:mb-36 lg:mb-44 max-w-7xl mx-4 md:mx-10 xl:mx-auto font-Ubuntu font-medium">
-        <div className="relative flex w-full flex-col md:flex-row rounded-xl bg-clip-border text-gray-700 shadow-md bg-[#feffff]">
-          <div className="relative m-0 md:w-2/5 shrink-0 overflow-hidden md:rounded-xl rounded-t-xl md:rounded-r-none bg-[#feffff] bg-clip-border text-gray-700">
-            <img
-              src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=1471&amp;q=80"
-              alt="image"
-              className="h-full w-full object-cover"
-            />
+    <div className="bg-[#feffff]">
+      <h4
+        className="text-[#e83e8c] text-center font-Ubuntu pt-28 pb-2"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
+        Have Any Question?
+      </h4>
+      <h1
+        className="text-[#17252a] text-3xl md:text-4xl lg:text-5xl text-center font-Ubuntu font-bold mb-12"
+        data-aos="fade-up"
+        data-aos-duration="1500"
+      >
+        Contact With Us
+      </h1>
+      <div className="flex justify-center items-center pb-16 md:pb-28 lg:pb-40 max-w-7xl mx-4 md:mx-10 xl:mx-auto font-Ubuntu font-medium">
+        <div className="flex w-full flex-col-reverse md:flex-row gap-6">
+          <div className="flex flex-col items-start justify-center  m-0 md:w-2/5 space-y-10 pl-7 md:pl-20 font-Ubuntu">
+            <div>
+              <p className="opacity-80">Address:</p>
+              <h3 className="font-medium">Dhaka-1204 Bangladesh</h3>
+            </div>
+            <div>
+              <p className="opacity-80">Phone:</p>
+              <h3 className="font-medium hover:underline">+8801919191991</h3>
+            </div>
+            <div>
+              <p className="opacity-80">Email:</p>
+              <h3 className="font-medium">nmd28573@gmail.com</h3>
+            </div>
+            <div>
+              <p className="opacity-80">Website:</p>
+              <Link
+                target="_blank"
+                to={"https://confer-42442.web.app"}
+                className="font-medium hover:underline"
+              >
+                https://confer-42442.web.app
+              </Link>
+            </div>
           </div>
-          <div className="flex-1 p-5">
-            <h2 className="text-3xl font-bold mb-1">Contact With Us</h2>
-            <hr />
-            <form onSubmit={handleSubmit} className="w-full mt-4">
+
+          <div className="flex-1 px-6">
+            <form onSubmit={handleSubmit} className="w-full">
               <div className="grid grid-cols-2 gap-4 mb-8">
                 <div>
                   <label
                     htmlFor="first_name"
-                    className="block text-gray-600 mb-2 ml-4"
+                    className="block text-[#17252a] mb-2 ml-4"
                   >
                     First Name
                   </label>
@@ -78,7 +90,7 @@ const ContactUs = () => {
                 <div>
                   <label
                     htmlFor="last_name"
-                    className="block text-gray-600 mb-2 ml-4"
+                    className="block text-[#17252a] mb-2 ml-4"
                   >
                     Last Name
                   </label>
@@ -96,7 +108,7 @@ const ContactUs = () => {
                 <div>
                   <label
                     htmlFor="email"
-                    className="block text-gray-600 mb-2 ml-4"
+                    className="block text-[#17252a] mb-2 ml-4"
                   >
                     Email Address
                   </label>
@@ -112,7 +124,7 @@ const ContactUs = () => {
                 <div>
                   <label
                     htmlFor="phone"
-                    className="block text-gray-600 mb-2 ml-4"
+                    className="block text-[#17252a] mb-2 ml-4"
                   >
                     Phone Number
                   </label>
@@ -140,7 +152,7 @@ const ContactUs = () => {
               <div className="mb-4">
                 <label
                   htmlFor="message"
-                  className="block text-gray-600 mb-2 ml-4"
+                  className="block text-[#17252a] mb-2 ml-4"
                 >
                   Message
                 </label>
@@ -163,9 +175,8 @@ const ContactUs = () => {
           </div>
         </div>
       </div>
-      <Footer></Footer>
     </div>
   );
 };
 
-export default ContactUs;
+export default HomeContact;

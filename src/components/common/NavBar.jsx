@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
-import { IoIosHome, IoIosLogIn, IoMdCart } from "react-icons/io";
+import { IoIosHome, IoMdCart } from "react-icons/io";
 import { MdOutlineProductionQuantityLimits } from "react-icons/md";
 import { BiSolidMessage } from "react-icons/bi";
 import { RiMenuSearchLine } from "react-icons/ri";
@@ -20,7 +20,7 @@ const NavBar = () => {
           <img className="w-8 h-8 lg:w-10 lg:h-10" src={logo} alt="" />
           <Link
             to={"/"}
-            className="cursor-pointer font-Ubuntu font-bold text-3xl leading-relaxed antialiased text-[#17252a]"
+            className="cursor-pointer font-Ubuntu font-bold text-2xl md:text-3xl lg:text-4xl leading-relaxed antialiased text-[#17252a]"
           >
             Brand <span className="text-[#feffff]">Shop</span>
           </Link>
@@ -34,7 +34,7 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 ease-in-out"
               }
             >
               Home
@@ -46,7 +46,7 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 ease-in-out"
               }
             >
               Add Product
@@ -58,7 +58,7 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 ease-in-out"
               }
             >
               Contact Us
@@ -190,11 +190,11 @@ const NavBar = () => {
               isPending
                 ? "pending"
                 : isActive
-                ? "btn btn-circle hidden lg:flex underline border-none bg-[#feffff] text-[#17252a] hover:bg-[#17252a] hover:text-[#feffff]"
-                : "btn btn-circle hidden lg:flex bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] border-none transition-colors duration-500 delay-100 ease-in-out"
+                ? "btn btn-circle btn-sm lg:btn-md border-none bg-[#feffff] text-[#17252a] hover:bg-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                : "btn btn-circle btn-sm lg:btn-md bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] border-none transition-colors duration-500 delay-100 ease-in-out"
             }
           >
-            <IoMdCart className="w-8 h-8"></IoMdCart>
+            <IoMdCart className="w-5 h-5 lg:w-8 lg:h-8"></IoMdCart>
           </NavLink>
           <button
             onClick={() => setOpenNavCart(!openNavCart)}
@@ -235,7 +235,7 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500  ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
@@ -252,7 +252,7 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500  ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
@@ -270,31 +270,13 @@ const NavBar = () => {
                   ? "pending"
                   : isActive
                   ? "text-[#feffff] underline"
-                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500  ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
                 <BiSolidMessage></BiSolidMessage>Contact Us
               </span>
             </NavLink>
-
-            <hr />
-
-            <Link
-              to={"/login"}
-              className="btn btn-sm rounded-md flex items-center justify-start text-base font-Ubuntu font-bold border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] normal-case"
-            >
-              <IoIosLogIn></IoIosLogIn> Login
-            </Link>
-
-            <hr />
-
-            <Link
-              to={"/cart"}
-              className="btn btn-sm rounded-md flex items-center justify-start text-base font-Ubuntu font-bold border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] normal-case"
-            >
-              <IoMdCart></IoMdCart> My Cart
-            </Link>
           </ul>
         </div>
       )}

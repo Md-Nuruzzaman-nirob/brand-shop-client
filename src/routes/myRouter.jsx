@@ -47,6 +47,7 @@ const myRouter = createBrowserRouter([
         path: "/cart",
         element: (
           <PrivetRouter>
+            {" "}
             <MyCart></MyCart>
           </PrivetRouter>
         ),
@@ -56,6 +57,7 @@ const myRouter = createBrowserRouter([
         path: "/brand/:id",
         element: (
           <PrivetRouter>
+            {" "}
             <BrandProducts></BrandProducts>
           </PrivetRouter>
         ),
@@ -66,6 +68,7 @@ const myRouter = createBrowserRouter([
         path: "/brand/:brandId/:id/update",
         element: (
           <PrivetRouter>
+            {" "}
             <UpdateProduct></UpdateProduct>
           </PrivetRouter>
         ),

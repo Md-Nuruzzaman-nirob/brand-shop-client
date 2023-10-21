@@ -51,25 +51,25 @@ const AddProducts = () => {
       });
   };
   return (
-    <div>
+    <div className="bg-[#3aafa9]">
       <NavBar></NavBar>
       <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto text-right lg:text-left py-8 md:py-12">
         <button
           onClick={handleGoBack}
-          className="btn btn-sm text-xs lg:text-base bg-red-800  hover:bg-red-900 text-white rounded-md px-6"
+          className="btn btn-sm rounded-md border-none text-sm lg:text-lg px-6 font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
         >
           <BsBoxArrowLeft />
           Home
         </button>
       </div>
 
-      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto px-4 md:px-10 lg:px-16 xl:px-28 py-10 md:py-16 lg:py-20 bg-[#F4F3F0] mb-16 md:mb-20 lg:mb-28 rounded-md">
-        <h3 className="text-4xl md:text-5xl text-center font-Bebas">
+      <div className="max-w-7xl mx-4 md:mx-10 xl:mx-auto px-4 md:px-10 lg:px-16 xl:px-28 py-10 md:py-16 lg:py-20 bg-[#feffff] mb-16 md:mb-20 lg:mb-28 rounded-md">
+        <h3 className="text-4xl md:text-5xl text-center font-Ubuntu font-bold">
           Add your Product
         </h3>
         <p className="text-center text-xs md:text-sm lg:text-base xl:text-lg md:mx-6 lg:mx-10 xl:mx-20 my-5 md:my-8"></p>
 
-        <form onSubmit={handleSubmit} className="font-medium font-Heebo">
+        <form onSubmit={handleSubmit} className="font-medium font-Ubuntu">
           <div className="mb-4 flex">
             <div className="w-1/2 mr-2">
               <label
@@ -81,7 +81,7 @@ const AddProducts = () => {
               <select
                 id="brandName"
                 name="brandName"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus:bg-[#feffff] outline-none"
                 required
               >
                 <option>Mercedes-Benz</option>
@@ -104,7 +104,7 @@ const AddProducts = () => {
                 type="text"
                 id="name"
                 name="name"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus-bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus-bg-[#feffff] outline-none"
                 placeholder="Enter name"
                 required
               />
@@ -123,7 +123,7 @@ const AddProducts = () => {
                 type="url"
                 id="imageUrl"
                 name="imageUrl"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus-bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus-bg-[#feffff] outline-none"
                 placeholder="Enter image url"
               />
             </div>
@@ -138,7 +138,7 @@ const AddProducts = () => {
               <select
                 id="category"
                 name="category"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus:bg-[#feffff] outline-none"
                 required
               >
                 <option>Car</option>
@@ -161,7 +161,7 @@ const AddProducts = () => {
               <select
                 id="price"
                 name="price"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus:bg-[#feffff] outline-none"
                 required
               >
                 <option>500</option>
@@ -193,7 +193,7 @@ const AddProducts = () => {
               <select
                 id="rating"
                 name="rating"
-                className="text-sm rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black focus:bg-white"
+                className="text-sm rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] focus:bg-[#feffff] outline-none"
                 required
               >
                 <option>5</option>
@@ -215,13 +215,13 @@ const AddProducts = () => {
             <textarea
               id="message"
               name="message"
-              className="rounded-md w-full px-3 py-2 bg-white text-black border focus:border-black overflow-hidden"
+              className="rounded-md w-full px-3 py-2 bg-[#feffff] text-[#17252a] border focus:border-[#17252a] overflow-hidden outline-none"
               placeholder="Your Message"
             />
           </div>
           <button
             type="submit"
-            className="w-full btn bg-red-800 hover:bg-red-900 text-white rounded-md font-Heebo"
+            className="w-full btn rounded-md md:text-lg font-Ubuntu font-bold bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] hover:border-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
           >
             Add Product
           </button>
