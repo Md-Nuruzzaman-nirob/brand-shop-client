@@ -1,27 +1,34 @@
-import banner from "../../assets/banner.png";
+import { Link } from "react-router-dom";
+import banner from "../../assets/pngwing.com (3).png";
 
 const Banner = () => {
   return (
-    <div
-      style={{
-        backgroundImage: `url(${banner})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: " no-repeat",
-      }}
-      className="h-[30vh] md:h-[55vh] lg:h-[65vh] xl:h-[75vh] 2xl:h-[85vh] "
-    >
-      <div className=" h-[30vh] md:h-[55vh] lg:h-[65vh] xl:h-[75vh] 2xl:h-[85vh]  text-white text-center pt-10 md:pt-16 xl:pt-20 2xl:pt-40">
-        <p className="font-Heebo text-[11px] md:text-sm lg:text-base xl:text-lg 2xl:text-xl text-gray-200 w-10/12 md:w-full mx-auto">
-          Your next adventure starts here. Drive with confidence in our
-          high-quality, well-maintained vehicles.
-        </p>
-        <h3 className="font-Bebas text-2xl md:text-4xl lg:text-5xl xl:text-7xl 2xl:text-8xl my-2 lg:my-4">
-          Quality vehicles for Every Journey
-        </h3>
-        <button className="btn btn-sm lg:btn-md rounded-md">
-          Explore More
-        </button>
+    <div className="bg-[#3aafa9]">
+      <div className="lg:h-[700px] xl:h-[800px] max-w-7xl mx-5 md:mx-10 xl:mx-auto flex flex-col-reverse lg:flex-row gap-10 lg:gap-5 justify-between items-center py-20 md:py-24 lg:py-0">
+        <div className=" text-[#feffff] text-center lg:text-left">
+          <h3 className="font-Ubuntu font-bold text-[35px] md:text-6xl lg:text-5xl xl:text-7xl mt-3">
+            Quality vehicles for{" "}
+            <span className="text-[#17252a] block">Every Journey</span>
+          </h3>
+          <p className="font-Ubuntu text-sm md:text-xl lg:text-sm xl:text-lg text-[#feffff] my-5 lg:my-3">
+            Your next adventure starts here. Drive with confidence in our
+            high-quality,
+            <span className="md:block">well-maintained vehicles.</span>
+          </p>
+          <Link
+            to={"/"}
+            className="btn rounded-md text-base font-Ubuntu font-bold border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out normal-case"
+          >
+            Explore More
+          </Link>
+        </div>
+        <div className="flex-1">
+          <img
+            className="w-[450px] xl:w-[580px] h-52 lg:h-60"
+            src={banner}
+            alt=""
+          />
+        </div>
       </div>
     </div>
   );

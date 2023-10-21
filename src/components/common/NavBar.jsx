@@ -14,27 +14,27 @@ const NavBar = () => {
   const { user, logout } = useAuth();
 
   return (
-    <nav className="sticky inset-0 z-10 block h-max w-full max-w-full rounded-none bg-white bg-opacity-60 py-4 px-4 text-white shadow-md backdrop-blur-2xl backdrop-saturate-200 md:px-10 xl:px-0 lg:py-5">
-      <div className="max-w-7xl mx-auto flex items-center justify-between text-gray-900">
+    <nav className="sticky inset-0 z-10 block h-max w-full max-w-full rounded-none bg-[#3aafa9] py-4 px-4 text-[#feffff] md:px-10 xl:px-0 lg:py-5">
+      <div className="max-w-7xl mx-auto flex items-center justify-between">
         <div className="flex items-center gap-2">
           <img className="w-8 h-8 lg:w-10 lg:h-10" src={logo} alt="" />
           <Link
             to={"/"}
-            className="cursor-pointer font-Bebas font-medium text-3xl leading-relaxed antialiased bg-gradient-to-r from-red-800  to-red-900 bg-clip-text text-transparent"
+            className="cursor-pointer font-Ubuntu font-bold text-3xl leading-relaxed antialiased text-[#17252a]"
           >
-            Brand Shop
+            Brand <span className="text-[#feffff]">Shop</span>
           </Link>
         </div>
         <div>
-          <ul className="ml-auto mr-8 hidden items-center gap-6 lg:flex font-Bebas text-2xl">
+          <ul className="ml-auto mr-8 hidden items-center gap-6 lg:flex font-Ubuntu font-bold text-xl">
             <NavLink
               to="/"
               className={({ isActive, isPending }) =>
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               Home
@@ -45,8 +45,8 @@ const NavBar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               Add Product
@@ -57,8 +57,8 @@ const NavBar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               Contact Us
@@ -70,7 +70,7 @@ const NavBar = () => {
           {!user ? (
             <Link
               to={"/login"}
-              className="btn btn-sm rounded-md bg-red-800  hover:bg-red-900 text-white hidden lg:flex text-base font-Heebo"
+              className="hidden lg:flex btn btn-sm rounded-md text-lg font-Ubuntu font-bold normal-case border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] transition-colors duration-500 delay-100 ease-in-out px-5"
             >
               Login
             </Link>
@@ -92,8 +92,8 @@ const NavBar = () => {
                 />
               )}
               {userProfile && (
-                <ul className="absolute right-0 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-white p-3 shadow-lg shadow-gray-500/50 focus:outline-none">
-                  <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-red-800 hover:text-red-900">
+                <ul className="absolute right-0 flex min-w-[180px] flex-col gap-2 overflow-auto rounded-md border border-blue-gray-50 bg-[#feffff] p-3 shadow-lg shadow-gray-500/50 focus:outline-none">
+                  <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-[#17252a]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -109,12 +109,12 @@ const NavBar = () => {
                         d="M17.982 18.725A7.488 7.488 0 0012 15.75a7.488 7.488 0 00-5.982 2.975m11.963 0a9 9 0 10-11.963 0m11.963 0A8.966 8.966 0 0112 21a8.966 8.966 0 01-5.982-2.275M15 9.75a3 3 0 11-6 0 3 3 0 016 0z"
                       ></path>
                     </svg>
-                    <p className="block font-Heebo text-sm font-semibold leading-normal text-inherit antialiased">
+                    <p className="block font-Ubuntu font-bold normal-case text-sm leading-normal text-inherit antialiased">
                       My Profile
                     </p>
                   </button>
 
-                  <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-red-800 hover:text-red-900">
+                  <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-[#17252a]">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
@@ -130,12 +130,12 @@ const NavBar = () => {
                         d="M9 3.75H6.912a2.25 2.25 0 00-2.15 1.588L2.35 13.177a2.25 2.25 0 00-.1.661V18a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18v-4.162c0-.224-.034-.447-.1-.661L19.24 5.338a2.25 2.25 0 00-2.15-1.588H15M2.25 13.5h3.86a2.25 2.25 0 012.012 1.244l.256.512a2.25 2.25 0 002.013 1.244h3.218a2.25 2.25 0 002.013-1.244l.256-.512a2.25 2.25 0 012.013-1.244h3.859M12 3v8.25m0 0l-3-3m3 3l3-3"
                       ></path>
                     </svg>
-                    <p className="block font-Heebo text-sm font-semibold leading-normal text-inherit antialiased">
+                    <p className="block font-Ubuntu font-bold normal-case text-sm leading-normal text-inherit antialiased">
                       Inbox
                     </p>
                   </button>
                   <Link to={"/contact"}>
-                    <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-red-800 hover:text-red-900">
+                    <button className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-[#17252a]">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         fill="none"
@@ -151,7 +151,7 @@ const NavBar = () => {
                           d="M16.712 4.33a9.027 9.027 0 011.652 1.306c.51.51.944 1.064 1.306 1.652M16.712 4.33l-3.448 4.138m3.448-4.138a9.014 9.014 0 00-9.424 0M19.67 7.288l-4.138 3.448m4.138-3.448a9.014 9.014 0 010 9.424m-4.138-5.976a3.736 3.736 0 00-.88-1.388 3.737 3.737 0 00-1.388-.88m2.268 2.268a3.765 3.765 0 010 2.528m-2.268-4.796a3.765 3.765 0 00-2.528 0m4.796 4.796c-.181.506-.475.982-.88 1.388a3.736 3.736 0 01-1.388.88m2.268-2.268l4.138 3.448m0 0a9.027 9.027 0 01-1.306 1.652c-.51.51-1.064.944-1.652 1.306m0 0l-3.448-4.138m3.448 4.138a9.014 9.014 0 01-9.424 0m5.976-4.138a3.765 3.765 0 01-2.528 0m0 0a3.736 3.736 0 01-1.388-.88 3.737 3.737 0 01-.88-1.388m2.268 2.268L7.288 19.67m0 0a9.024 9.024 0 01-1.652-1.306 9.027 9.027 0 01-1.306-1.652m0 0l4.138-3.448M4.33 16.712a9.014 9.014 0 010-9.424m4.138 5.976a3.765 3.765 0 010-2.528m0 0c.181-.506.475-.982.88-1.388a3.736 3.736 0 011.388-.88m-2.268 2.268L4.33 7.288m6.406 1.18L7.288 4.33m0 0a9.024 9.024 0 00-1.652 1.306A9.025 9.025 0 004.33 7.288"
                         ></path>
                       </svg>
-                      <p className="block font-Heebo text-sm font-semibold leading-normal text-inherit antialiased">
+                      <p className="block font-Ubuntu font-bold normal-case text-sm leading-normal text-inherit antialiased">
                         Help
                       </p>
                     </button>
@@ -159,7 +159,7 @@ const NavBar = () => {
                   <hr className="border-blue-gray-50" />
                   <button
                     onClick={() => logout()}
-                    className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-red-800 hover:text-red-900"
+                    className="btn btn-sm flex justify-start w-full items-center gap-2 rounded-md px-3 outline-none hover:bg-gray-500 hover:bg-opacity-30 text-[#17252a]"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
@@ -176,7 +176,7 @@ const NavBar = () => {
                         d="M5.636 5.636a9 9 0 1012.728 0M12 3v9"
                       ></path>
                     </svg>
-                    <p className="block font-Heebo text-sm font-semibold leading-normal text-inherit antialiased">
+                    <p className="block font-Ubuntu font-bold normal-case text-sm leading-normal text-inherit antialiased">
                       Log Out
                     </p>
                   </button>
@@ -184,22 +184,28 @@ const NavBar = () => {
               )}
             </div>
           )}
-          <Link
+          <NavLink
             to={"/cart"}
-            className="btn btn-circle hidden lg:flex bg-red-800 hover:bg-red-900 text-white border-none"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "btn btn-circle hidden lg:flex underline border-none bg-[#feffff] text-[#17252a] hover:bg-[#17252a] hover:text-[#feffff]"
+                : "btn btn-circle hidden lg:flex bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] border-none transition-colors duration-500 delay-100 ease-in-out"
+            }
           >
             <IoMdCart className="w-8 h-8"></IoMdCart>
-          </Link>
+          </NavLink>
           <button
             onClick={() => setOpenNavCart(!openNavCart)}
-            className="middle none relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] rounded-lg text-center font-Heebo text-xs font-medium uppercase text-blue-gray-500 transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
+            className="middle none relative ml-auto h-6 max-h-[40px] w-6 max-w-[40px] rounded-lg text-center font-Ubuntu font-bold normal-case text-xs text-blue-gray-500 transition-all hover:bg-transparent focus:bg-transparent active:bg-transparent disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none lg:hidden"
           >
             <span className="absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 transform">
               {openNavCart ? (
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
-                  className="h-8 w-8 text-red-900"
+                  className="h-8 w-8 text-[#17252a]"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                   strokeWidth={2}
@@ -211,7 +217,7 @@ const NavBar = () => {
                   />
                 </svg>
               ) : (
-                <RiMenuSearchLine className="w-7 h-7 text-red-800"></RiMenuSearchLine>
+                <RiMenuSearchLine className="w-7 h-7 text-[#17252a]"></RiMenuSearchLine>
               )}
             </span>
           </button>
@@ -220,7 +226,7 @@ const NavBar = () => {
 
       {openNavCart && (
         <div className="block w-full basis-full overflow-hidden text-blue-gray-900 lg:hidden">
-          <ul className="mt-2 mb-4 flex flex-col gap-2 pb-2 text-black font-Bebas font-semibold text-lg">
+          <ul className="mt-2 mb-4 flex flex-col gap-2 pb-2 text-black font-Ubuntu font-bold text-lg">
             <hr />
             <NavLink
               to="/"
@@ -228,8 +234,8 @@ const NavBar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
@@ -245,8 +251,8 @@ const NavBar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
@@ -263,8 +269,8 @@ const NavBar = () => {
                 isPending
                   ? "pending"
                   : isActive
-                  ? "text-red-900 underline"
-                  : "text-red-800 hover:text-red-900"
+                  ? "text-[#feffff] underline"
+                  : "text-[#17252a] hover:text-[#feffff] transition-colors duration-500 delay-100 ease-in-out"
               }
             >
               <span className="flex items-center justify-start gap-1">
@@ -276,7 +282,7 @@ const NavBar = () => {
 
             <Link
               to={"/login"}
-              className="btn btn-sm btn-neutral flex items-center justify-start font-Heebo font-extrabold bg-red-800 hover:bg-red-900 text-white border-none rounded-md"
+              className="btn btn-sm rounded-md flex items-center justify-start text-base font-Ubuntu font-bold border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] normal-case"
             >
               <IoIosLogIn></IoIosLogIn> Login
             </Link>
@@ -285,7 +291,7 @@ const NavBar = () => {
 
             <Link
               to={"/cart"}
-              className="btn btn-sm btn-neutral flex items-center justify-start font-Heebo font-extrabold bg-red-800 hover:bg-red-900 text-white border-none rounded-md"
+              className="btn btn-sm rounded-md flex items-center justify-start text-base font-Ubuntu font-bold border-none bg-[#17252a] text-[#feffff] hover:bg-[#feffff] hover:text-[#17252a] normal-case"
             >
               <IoMdCart></IoMdCart> My Cart
             </Link>

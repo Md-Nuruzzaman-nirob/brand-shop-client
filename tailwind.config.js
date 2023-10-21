@@ -10,6 +10,7 @@ module.exports = {
         Noto: ['Noto Sans', 'sans-serif'],
         Bebas: ['Bebas Neue', 'sans-serif'],
         Heebo: ['Heebo', 'sans-serif'],
+        Ubuntu: ['Ubuntu', 'sans-serif'],
       },
     },
   },
