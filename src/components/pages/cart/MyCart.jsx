@@ -2,8 +2,12 @@ import { useLoaderData } from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import Footer from "../../common/Footer";
 import MyCartProducts from "./MyCartProducts";
+import { useEffect } from "react";
 
 const MyCart = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const cartData = useLoaderData();
   return (
     <>

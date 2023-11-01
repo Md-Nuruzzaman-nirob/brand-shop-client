@@ -3,7 +3,7 @@ import NavBar from "../../common/NavBar";
 import SocialLogin from "./SocialLogin";
 import Footer from "../../common/Footer";
 import useAuth from "../../../hooks/useAuth";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import toast from "react-hot-toast";
 import { sendPasswordResetEmail } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
@@ -14,6 +14,10 @@ const Login = () => {
   // use state
   const [emailValidation, setEmailValidation] = useState("");
   const [passwordValidation, setPasswordValidation] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // context
   const { loginUser } = useAuth();

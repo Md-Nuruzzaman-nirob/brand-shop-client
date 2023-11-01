@@ -3,8 +3,12 @@ import NavBar from "../../common/NavBar";
 import { BsBoxArrowLeft } from "react-icons/bs";
 import Footer from "../../common/Footer";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const AddProducts = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate("/");

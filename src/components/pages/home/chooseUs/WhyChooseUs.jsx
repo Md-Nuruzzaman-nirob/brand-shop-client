@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import image from "../../../../assets/award_ribbon_check_mark_with_stars.jpg";
 
 const WhyChooseUs = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <section className="max-w-7xl xl:mx-auto md:mx-10 mx-5 text-[#feffff] py-16">
       <div className="container mx-auto text-center font-Ubuntu font-medium">

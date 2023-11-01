@@ -8,8 +8,12 @@ import NavBar from "../../common/NavBar";
 import { BsBoxArrowLeft } from "react-icons/bs";
 import Footer from "../../common/Footer";
 import Swal from "sweetalert2";
+import { useEffect } from "react";
 
 const UpdateCartProduct = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { id } = useParams();
   const cartData = useLoaderData();
   const location = useLocation();

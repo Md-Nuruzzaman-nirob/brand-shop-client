@@ -5,9 +5,13 @@ import Footer from "../../common/Footer";
 import Brands from "./brands/Brands";
 import HomeContact from "./contact/HomeContact";
 import WhyChooseUs from "./chooseUs/WhyChooseUs";
+import { useEffect } from "react";
 
 const Home = () => {
   const { loader } = useAuth();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (loader) {
     return (

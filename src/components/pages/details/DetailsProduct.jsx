@@ -8,10 +8,14 @@ import Footer from "../../common/Footer";
 import NavBar from "../../common/NavBar";
 import Swal from "sweetalert2";
 import { BsBoxArrowLeft } from "react-icons/bs";
+import { useEffect } from "react";
 
 const DetailsProduct = () => {
   const { id } = useParams();
   const productData = useLoaderData();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const product = productData.find((product) => product._id === id);
 

@@ -1,6 +1,6 @@
 import NavBar from "../../common/NavBar";
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import Footer from "../../common/Footer";
 import { useNavigate } from "react-router-dom";
@@ -9,6 +9,9 @@ import { BsBoxArrowLeft } from "react-icons/bs";
 const ContactUs = () => {
   const [emailValidation, setEmailValidation] = useState("");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const navigate = useNavigate();
   const handleGoBack = () => {
     navigate("/");

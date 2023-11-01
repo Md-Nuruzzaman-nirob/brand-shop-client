@@ -1,8 +1,12 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import PropTypes from "prop-types";
+import { useEffect } from "react";
 
 const MyCartProducts = ({ product }) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { brandName, category, imageUrl, message, name, price, rating, _id } =
     product || {};
 

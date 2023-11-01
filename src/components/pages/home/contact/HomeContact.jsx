@@ -1,10 +1,14 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 const HomeContact = () => {
   const [emailValidation, setEmailValidation] = useState("");
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

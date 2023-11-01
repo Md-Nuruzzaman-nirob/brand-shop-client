@@ -5,10 +5,15 @@ import banner2 from "../../../../assets/pngwing.com (4).png";
 import banner3 from "../../../../assets/ferrari.png";
 import { Link, useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
+import { useEffect } from "react";
 
 const BrandProducts = () => {
   const { id } = useParams();
   const productsData = useLoaderData();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const filteredProduct = productsData.filter(
     (product) => product.brandName.toLowerCase() === id

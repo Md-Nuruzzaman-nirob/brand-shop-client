@@ -5,7 +5,7 @@ import useAuth from "../../../hooks/useAuth";
 import { sendEmailVerification, updateProfile } from "firebase/auth";
 import { auth } from "../../../firebase/firebase.config";
 import Footer from "../../common/Footer";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { PiWarningOctagonFill } from "react-icons/pi";
 import Swal from "sweetalert2";
@@ -17,6 +17,9 @@ const Register = () => {
   const [passwordValidation, setPasswordValidation] = useState("");
   const [checkboxValidation, setCheckboxValidation] = useState("");
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   // context
   const { createUser } = useAuth();
   // navigate
