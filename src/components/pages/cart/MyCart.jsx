@@ -1,14 +1,25 @@
-import { useLoaderData } from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import Footer from "../../common/Footer";
 import MyCartProducts from "./MyCartProducts";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const MyCart = () => {
+  const [cartData, setCartData] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/carts?email=${user?.email}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setCartData(data));
+  }, [user?.email]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  const cartData = useLoaderData();
+
   return (
     <>
       <NavBar></NavBar>

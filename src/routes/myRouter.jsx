@@ -22,8 +22,6 @@ const myRouter = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () =>
-          fetch("https://brand-shop-server-ecru.vercel.app/products"),
       },
       {
         path: "/addProduct",
@@ -53,7 +51,6 @@ const myRouter = createBrowserRouter([
             <MyCart></MyCart>
           </PrivetRouter>
         ),
-        loader: () => fetch("https://brand-shop-server-ecru.vercel.app/carts"),
       },
       {
         path: "/brand/:id",
@@ -63,8 +60,6 @@ const myRouter = createBrowserRouter([
             <BrandProducts></BrandProducts>
           </PrivetRouter>
         ),
-        loader: () =>
-          fetch("https://brand-shop-server-ecru.vercel.app/products"),
       },
       {
         path: "/brand/:brandId/:id/update",
@@ -74,8 +69,6 @@ const myRouter = createBrowserRouter([
             <UpdateProduct></UpdateProduct>
           </PrivetRouter>
         ),
-        loader: () =>
-          fetch("https://brand-shop-server-ecru.vercel.app/products"),
       },
       {
         path: "/brand/:brandId/:id/details",
@@ -85,8 +78,6 @@ const myRouter = createBrowserRouter([
             <DetailsProduct></DetailsProduct>
           </PrivetRouter>
         ),
-        loader: () =>
-          fetch("https://brand-shop-server-ecru.vercel.app/products"),
       },
       {
         path: "/:cartId/:id/update",
@@ -95,7 +86,6 @@ const myRouter = createBrowserRouter([
             <UpdateCartProduct></UpdateCartProduct>
           </PrivetRouter>
         ),
-        loader: () => fetch("https://brand-shop-server-ecru.vercel.app/carts"),
       },
     ],
   },

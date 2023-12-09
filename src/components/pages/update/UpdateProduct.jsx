@@ -1,26 +1,36 @@
-import {
-  useLoaderData,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import NavBar from "../../common/NavBar";
 import { BsBoxArrowLeft } from "react-icons/bs";
 import Footer from "../../common/Footer";
 import Swal from "sweetalert2";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const UpdateProduct = () => {
+  const [cartData, setCartData] = useState([]);
+  const { user } = useAuth();
+  // console.log("$", cartData);
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/products?email=${user?.email}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setCartData(data));
+  }, [user?.email]);
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   const { id } = useParams();
-  const cartData = useLoaderData();
   const location = useLocation();
 
   const product = cartData.find((product) => product._id === id);
   const { brandName, category, imageUrl, message, name, price, rating, _id } =
     product || {};
+  // console.log(product);
+  console.log(price);
+  console.log(rating);
 
   const navigate = useNavigate();
   const handleGoBack = () => {
@@ -45,10 +55,11 @@ const UpdateProduct = () => {
       price,
       rating,
       message,
+      email: user?.email,
     };
 
     // sending to backEnd
-    fetch(`https://brand-shop-server-ecru.vercel.app/products/${_id}`, {
+    fetch(`http://localhost:5001/products/${_id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

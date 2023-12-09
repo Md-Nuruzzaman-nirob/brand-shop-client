@@ -23,7 +23,7 @@ const MyCartProducts = ({ product }) => {
       confirmButtonText: "Yes, Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://brand-shop-server-ecru.vercel.app/carts/${id}`, {
+        fetch(`http://localhost:5001/carts/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

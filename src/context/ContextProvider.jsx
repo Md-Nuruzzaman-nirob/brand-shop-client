@@ -10,6 +10,7 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
+import axios from "axios";
 
 export const AuthContext = createContext(null);
 
@@ -49,14 +50,33 @@ const ContextProvider = ({ children }) => {
 
   // observer
   useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      setUser(currentUser);
       setLoader(false);
+      if (currentUser) {
+        axios
+          .post("http://localhost:5001/jwt", loggedUser, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log("access token", data.data);
+          });
+      } else {
+        axios
+          .post("http://localhost:5001/logout", loggedUser, {
+            withCredentials: true,
+          })
+          .then((data) => {
+            console.log("remove cookie", data.data);
+          });
+      }
     });
     () => {
       return unsubscribe;
     };
-  }, []);
+  }, [user?.email]);
 
   // logout
   const logout = () => {

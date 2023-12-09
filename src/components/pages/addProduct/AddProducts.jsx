@@ -4,8 +4,10 @@ import { BsBoxArrowLeft } from "react-icons/bs";
 import Footer from "../../common/Footer";
 import Swal from "sweetalert2";
 import { useEffect } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const AddProducts = () => {
+  const { user } = useAuth();
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -32,10 +34,11 @@ const AddProducts = () => {
       price,
       rating,
       message,
+      email: user.email,
     };
 
     // sending to backEnd
-    fetch("https://brand-shop-server-ecru.vercel.app/products", {
+    fetch("http://localhost:5001/products", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -43,7 +46,8 @@ const AddProducts = () => {
       body: JSON.stringify(addProduct),
     })
       .then((res) => res.json())
-      .then(() => {
+      .then((data) => {
+        console.log(data);
         Swal.fire({
           position: "center",
           icon: "success",

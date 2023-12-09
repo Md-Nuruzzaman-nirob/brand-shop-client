@@ -6,6 +6,8 @@ const ProductCard = ({ product }) => {
     product || {};
 
   const location = useLocation();
+  // console.log(typeof rating);
+  // console.log(product);
 
   return (
     <div className="bg-[#F4F3F0] rounded-xl">

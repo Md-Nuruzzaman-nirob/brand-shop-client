@@ -3,21 +3,33 @@ import NavBar from "../../../common/NavBar";
 import banner1 from "../../../../assets/bmw-transparent-3.png";
 import banner2 from "../../../../assets/pngwing.com (4).png";
 import banner3 from "../../../../assets/ferrari.png";
-import { Link, useLoaderData, useParams } from "react-router-dom";
 import ProductCard from "./ProductCard";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import useAuth from "../../../../hooks/useAuth";
 
 const BrandProducts = () => {
+  const [productsData, setProductsData] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/products?email=${user?.email}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setProductsData(data));
+  }, [user?.email]);
+
   const { id } = useParams();
-  const productsData = useLoaderData();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const filteredProduct = productsData.filter(
+  const filteredProduct = productsData?.filter(
     (product) => product.brandName.toLowerCase() === id
   );
+  console.log(filteredProduct);
   return (
     <>
       <NavBar></NavBar>

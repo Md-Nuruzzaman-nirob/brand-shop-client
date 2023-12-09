@@ -1,18 +1,28 @@
-import {
-  useLoaderData,
-  useLocation,
-  useNavigate,
-  useParams,
-} from "react-router-dom";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
 import Footer from "../../common/Footer";
 import NavBar from "../../common/NavBar";
 import Swal from "sweetalert2";
 import { BsBoxArrowLeft } from "react-icons/bs";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import useAuth from "../../../hooks/useAuth";
 
 const DetailsProduct = () => {
+  const [productData, setProductData] = useState([]);
+  const { user } = useAuth();
+
+  useEffect(() => {
+    fetch(`http://localhost:5001/products?email=${user?.email}`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        setProductData(data);
+        console.log(data);
+      });
+  }, [user?.email]);
+
   const { id } = useParams();
-  const productData = useLoaderData();
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
@@ -37,10 +47,11 @@ const DetailsProduct = () => {
       price,
       rating,
       message,
+      email: user?.email,
     };
 
     // sending to backEnd
-    fetch("https://brand-shop-server-ecru.vercel.app/carts", {
+    fetch("http://localhost:5001/carts", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -69,7 +80,7 @@ const DetailsProduct = () => {
       confirmButtonText: "Yes, Delete",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://brand-shop-server-ecru.vercel.app/products/${id}`, {
+        fetch(`http://localhost:5001/products/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -86,7 +97,7 @@ const DetailsProduct = () => {
       }
     });
   };
-
+  console.log(typeof rating);
   return (
     <>
       <NavBar></NavBar>
@@ -141,35 +152,35 @@ const DetailsProduct = () => {
                       name={`rating-${_id}`}
                       className="mask mask-star-2 bg-orange-400"
                       disabled
-                      defaultChecked={rating === "1"}
+                      defaultChecked={parseInt(rating) === 1}
                     />
                     <input
                       type="radio"
                       name={`rating-${_id}`}
                       className="mask mask-star-2 bg-orange-400"
                       disabled
-                      defaultChecked={rating === "2"}
+                      defaultChecked={parseInt(rating) === 2}
                     />
                     <input
                       type="radio"
                       name={`rating-${_id}`}
                       className="mask mask-star-2 bg-orange-400"
                       disabled
-                      defaultChecked={rating === "3"}
+                      defaultChecked={parseInt(rating) === 3}
                     />
                     <input
                       type="radio"
                       name={`rating-${_id}`}
                       className="mask mask-star-2 bg-orange-400"
                       disabled
-                      defaultChecked={rating === "4"}
+                      defaultChecked={parseInt(rating) === 4}
                     />
                     <input
                       type="radio"
                       name={`rating-${_id}`}
                       className="mask mask-star-2 bg-orange-400"
                       disabled
-                      defaultChecked={rating === "5"}
+                      defaultChecked={parseInt(rating) === 5}
                     />
                   </div>
                 </div>
