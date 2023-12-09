@@ -1,8 +1,9 @@
-# React + Vite
+# Brand Shop Overview
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Brand Shop website is a Automotive categories website
 
-Currently, two official plugins are available:
+# Brand Shop Links :
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Server Side Link : https://github.com/Md-Nuruzzaman-nirob/brand-shop-server
+
+Live Link : https://brand-shop-61d84.web.app/
